@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GARCÍA Y CÍA | CORPORATE HUB</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Lexend:wght@600;900&family=JetBrains+Mono:wght@400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --midnight: #001a3d;
+            --gold: #c5a059;
+            --soft-blue: #f4f9ff;
+            --white: #ffffff;
+            --corp-shadow: 0 15px 35px rgba(0, 26, 61, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--midnight);
+            background-color: #f8f9fa;
+            background-image: linear-gradient(rgba(248, 249, 250, 0.95), rgba(248, 249, 250, 0.95)), url('https://i.ibb.co/nN4bMYLV/26228.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            line-height: 1.4;
+        }
+
+        /* HEADER OPTIMIZADO */
+        header {
+            position: fixed; top: 0; width: 100%; 
+            padding: 10px 6%;
+            display: flex; justify-content: space-between; align-items: center; z-index: 10000;
+            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); 
+            border-bottom: 2px solid var(--gold);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .brand h1 { font-family: 'Lexend', sans-serif; font-size: 1.2rem; font-weight: 900; letter-spacing: -0.5px; }
+        .brand p { font-size: 0.55rem; color: var(--gold); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-top: -3px; }
+
+        .system-meta { text-align: right; font-family: 'JetBrains Mono', monospace; }
+        #clock { font-size: 0.75rem; font-weight: 800; color: var(--midnight); background: var(--soft-blue); padding: 3px 8px; border-radius: 5px; }
+        #date-display { font-size: 0.45rem; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-top: 2px; }
+
+        /* CONTENEDOR AJUSTADO */
+        main { padding: 90px 5% 40px; max-width: 1100px; margin: 0 auto; }
+        
+        .hero-title { text-align: center; margin-bottom: 25px; }
+        .hero-title h2 { font-family: 'Lexend', sans-serif; font-size: 1.1rem; font-weight: 900; color: var(--midnight); text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; }
+
+        /* GRID DE BOTONES REDUCIDOS */
+        .grid-nav { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 12px; 
+        }
+
+        .nav-btn {
+            background: var(--white); border: 1px solid #eee; 
+            padding: 25px 10px; border-radius: 15px;
+            display: flex; flex-direction: column; align-items: center; gap: 12px;
+            cursor: pointer; transition: all 0.3s ease;
+            box-shadow: var(--corp-shadow); position: relative;
+        }
+
+        .nav-btn:active { transform: scale(0.95); background: var(--soft-blue); }
+
+        .nav-btn i { font-size: 1.8rem; color: var(--midnight); }
+        .nav-btn span { 
+            font-family: 'Lexend', sans-serif; font-weight: 800; 
+            font-size: 0.65rem; letter-spacing: 1.5px; 
+            text-transform: uppercase; color: var(--midnight); text-align: center; 
+        }
+
+        /* DESTACADOS */
+        .btn-oferta { border: 1.5px solid var(--gold) !important; background: #fffcf5 !important; }
+        .btn-extra { background: var(--midnight) !important; border: none !important; }
+        .btn-extra span, .btn-extra i { color: var(--gold) !important; }
+/* BUSCADOR DE ALTA GAMA - GARCÍA Y CÍA */
+.search-wrapper {
+    margin: 110px 20px 20px 20px; /* ESPACIO PARA QUE NO LO TAPE EL HEADER */
+    display: flex;
+    justify-content: center;
+}
+
+#searchInput {
+    width: 100%;
+    max-width: 800px;
+    padding: 18px 25px;
+    background: #ffffff;
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    font-family: 'Lexend', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--midnight);
+    text-transform: uppercase;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+#searchInput:focus {
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+    transform: translateY(-3px);
+    border-color: var(--midnight);
+}
+
+        /* ADAPTACIÓN PC */
+        @media (min-width: 768px) {
+            .grid-nav { grid-template-columns: repeat(3, 1fr); gap: 25px; }
+            .nav-btn { padding: 45px 20px; }
+            .nav-btn i { font-size: 2.5rem; }
+            .nav-btn span { font-size: 0.8rem; }
+            .nav-btn:hover { transform: translateY(-5px); border-color: var(--gold); }
+            .brand h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+    <style>
+        /* MODALES OPTIMIZADOS (MÓVIL-FIRST) */
+        #modalProductos, .modal-premium {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 26, 61, 0.5); backdrop-filter: blur(8px);
+            z-index: 20000; display: none; opacity: 0; transition: 0.3s;
+            padding: 15px; /* Espacio para que no toque los bordes en el celu */
+        }
+        
+        #modalProductos.active, .modal-premium.active { 
+            display: flex !important; align-items: center; justify-content: center; opacity: 1; 
+        }
+
+        .modal-content {
+            background: var(--white);
+            width: 100%; max-width: 550px;
+            max-height: 85vh; /* Altura máxima para que no tape todo el celu */
+            border-radius: 20px;
+            position: relative;
+            display: flex; flex-direction: column;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            overflow: hidden;
+            transform: translateY(20px); transition: 0.3s;
+        }
+        #modalProductos.active .modal-content { transform: translateY(0); }
+
+        .modal-header {
+            padding: 18px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex; justify-content: space-between; align-items: center;
+            background: var(--white); z-index: 10;
+        }
+        .modal-header h2 { font-size: 0.9rem; font-family: 'Lexend', sans-serif; color: var(--gold); letter-spacing: 1px; }
+
+        .close-btn {
+            width: 35px; height: 35px; border-radius: 10px;
+            background: var(--soft-blue); border: none; color: var(--midnight);
+            display: grid; place-items: center; cursor: pointer;
+        }
+
+        #modalBody {
+            padding: 15px; overflow-y: auto; flex-grow: 1;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* DISEÑO DE PRODUCTO COMPACTO */
+        .prod-item {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px; background: #fff; border-radius: 12px;
+            margin-bottom: 8px; border: 1px solid #f0f0f0;
+        }
+        .prod-info { display: flex; align-items: center; gap: 12px; flex: 1; }
+        .prod-img { width: 45px; height: 45px; object-fit: contain; border-radius: 8px; background: #f9f9f9; }
+        .prod-name { font-size: 0.75rem; font-weight: 800; color: var(--midnight); line-height: 1.2; max-width: 140px; }
+
+        .item-controls { display: flex; align-items: center; gap: 8px; }
+        .btn-qty {
+            width: 30px; height: 30px; border-radius: 8px; border: none;
+            font-weight: 900; cursor: pointer; transition: 0.2s;
+        }
+        .btn-minus { background: #f1f2f6; color: #a4b0be; }
+        .btn-plus { background: var(--gold); color: white; }
+        .item-count { font-family: 'JetBrains Mono'; font-weight: 800; font-size: 0.85rem; min-width: 20px; text-align: center; }
+        .item-count.active { color: var(--gold); }
+
+        /* PANEL DE CLIENTE (CARRITO) */
+        .client-panel {
+            position: fixed; bottom: -100%; left: 0; width: 100%;
+            background: var(--midnight); color: white; z-index: 15000;
+            padding: 25px 8% 40px; border-radius: 30px 30px 0 0;
+            transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .client-panel.active { bottom: 0; }
+        .form-input {
+            width: 100%; padding: 15px; border-radius: 12px; border: none;
+            margin-bottom: 10px; background: rgba(255,255,255,0.1); color: white;
+            font-family: inherit; font-size: 0.9rem;
+        }
+        .send-btn {
+            width: 100%; padding: 18px; background: var(--gold); color: var(--midnight);
+            border: none; border-radius: 12px; font-weight: 900; font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 1px; cursor: pointer;
+        }
+
+        #orderSummary { max-height: 150px; overflow-y: auto; margin-bottom: 15px; font-size: 0.8rem; }
+        .summary-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+                /* DISEÑO DEL CARGADOR PREMIUM */
+        #loadingOverlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #0a192f; z-index: 20000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 0.5s ease;
+        }
+        .spinner {
+            width: 50px; height: 50px;
+            border: 4px solid rgba(212, 175, 55, 0.1);
+            border-top-color: #d4af37; border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        /* BUSCADOR DENTRO DE LAS SECCIONES */
+.search-container {
+    padding: 10px 0 20px 0;
+    width: 100%;
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input-wrapper i {
+    position: absolute;
+    left: 15px;
+    color: var(--gold);
+}
+
+.search-bar-inner {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border-radius: 12px;
+    border: 1.5px solid #eee;
+    background: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-bar-inner:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+}
+/* EFECTO DE APARICIÓN SUAVE */
+.prod-img { opacity: 0; transition: opacity 0.7s ease; }
+.img-loaded { opacity: 1 !important; }
+
+/* BOTÓN VOLVER ARRIBA PREMIUM */
+#btnArriba {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: var(--gold);
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+/* ICONO DE LA X PARA BORRAR BUSQUEDA */
+.clear-search {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--gold);
+    display: none; /* EMPIEZA OCULTO */
+    z-index: 10;
+}
+/* CABECERA FLOTANTE PREMIUM */
+#modalBody > div:nth-child(1), /* EL BOTÓN VOLVER */
+.search-container { 
+    position: sticky;
+    top: -20px; /* SE PEGA AL TECHO DEL MODAL */
+    background-color: white; /* FONDO SÓLIDO PARA QUE NO SE TRANSPARENTE */
+    z-index: 100;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* AJUSTE PARA EL BOTÓN VOLVER */
+#modalBody > div:nth-child(1) {
+    top: -20px;
+    margin-bottom: 0 !important;
+    padding-top: 20px;
+}
+
+/* AJUSTE PARA EL BUSCADOR */
+.search-container {
+    top: 25px; /* QUEDA JUSTO DEBAJO DEL BOTÓN VOLVER */
+    border-bottom: 1px solid #eee; /* UNA LÍNEA SUTIL PARA SEPARAR */
+}
+/* EFECTO DE LATIDO PARA EL CARRITO */
+@keyframes pulse-cart {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.cart-animate {
+    animation: pulse-cart 0.3s ease-in-out;
+}
+
+/* EFECTO DE CARGA PARA LAS IMÁGENES (SKELETON) */
+.prod-img {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading-skeleton 1.5s infinite;
+}
+
+@keyframes loading-skeleton {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+/* EL "LATIDO" DEL CARRITO */
+@keyframes pulse-cart {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+.cart-animate {
+  animation: pulse-cart 0.3s ease-in-out !important;
+}
+
+    </style>
+</head>
+<body>
+<div id="loadingOverlay">
+    <div class="spinner"></div>
+    <p style="color: #d4af37; margin-top: 20px; font-family: 'Lexend', sans-serif; font-size: 0.9rem; letter-spacing: 3px; font-weight: 800; text-transform: uppercase;">GARCÍA Y CÍA</p>
+    <p style="color: white; opacity: 0.5; font-size: 0.6rem; margin-top: 5px; text-transform: uppercase;">Sincronizando catálogo...</p>
+</div>
+
+    <header>
+        <div class="brand">
+            <h1>GARCÍA Y CÍA</h1>
+            <p>DISTRIBUCIONES</p>
+        </div>
+        <div class="system-meta">
+            <div id="clock">00:00:00</div>
+            <div id="date-display">CARGANDO...</div>
+        </div>
+    </header>
+    <main>
+        <section class="hero-title">
+            <h2>CATÁLOGO CORPORATIVO</h2>
+        </section>
+
+        <nav class="grid-nav">
+            <div class="nav-btn" onclick="openModal('alm')">
+                <i class="fa-solid fa-utensils"></i>
+                <span>ALIMENTOS</span>
+            </div>
+            <div class="nav-btn" onclick="openModal('per')">
+                <i class="fa-solid fa-spray-can-sparkles"></i>
+                <span>PERFUMERÍA</span>
+            </div>
+            <div class="nav-btn" onclick="openModal('lim')">
+                <i class="fa-solid fa-soap"></i>
+                <span>LIMPIEZA</span>
+            </div>
+            <div class="nav-btn" onclick="openModal('var')">
+                <i class="fa-solid fa-box-archive"></i>
+                <span>VARIOS</span>
+            </div>
+            <div class="nav-btn btn-oferta" onclick="openModal('sem')">
+                <i class="fa-solid fa-tag"></i>
+                <span>OFERTAS SEMANALES</span>
+            </div>
+            <div class="nav-btn btn-extra" onclick="openModal('ext')">
+                <i class="fa-solid fa-fire"></i>
+                <span>OFERTAS SEMANALES EXTRAS</span>
+            </div>
+        </nav>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <button onclick="openSchedule()" style="background: none; border: 1px solid var(--gold); color: var(--midnight); padding: 10px 20px; border-radius: 50px; font-weight: 800; font-size: 0.7rem; letter-spacing: 1px; cursor: pointer; text-transform: uppercase;">
+                <i class="fa-solid fa-clock" style="margin-right: 5px;"></i> Ver Horarios
+            </button>
+        </div>
+
+        <div style="background: var(--midnight); color: white; padding: 25px; border-radius: 20px; margin-top: 30px; border-left: 6px solid var(--gold);">
+            <h3 style="color: var(--gold); font-size: 0.9rem; margin-bottom: 10px; font-family: 'Lexend';">GARCÍA Y CIA DISTRIBUCIONES</h3>
+            <p style="font-size: 0.8rem; opacity: 0.9; line-height: 1.6;">Distribuidora mayorista y minorista de productos de alimentos,limpieza y perfumeria.Con el estándar más alto de calidad en Bell Ville y zona.</p>
+        </div>
+
+<section style="margin-top: 40px; text-align: center;">
+    <p style="font-weight: 800; font-size: 0.75rem; color: var(--midnight); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">
+        Cura Ferreyra 920 — Bell Ville, Córdoba
+    </p>
+    
+    <div style="height: 250px; border-radius: 20px; overflow: hidden; border: 2px solid var(--midnight); margin-bottom: 25px; box-shadow: var(--corp-shadow);">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3377.168582236371!2d-62.6847253!3d-32.6282827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cc5747604f81a7%3A0xc3f58a9e229e671c!2sCura%20Ferreyra%20920%2C%20X2550%20Bell%20Ville%2C%20C%C3%B3rdoba!5e0!3m2!1ses-419!2sar!4v1705600000000!5m2!1ses-419!2sar" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+
+    <a href="https://maps.google.com/?q=Cura+Ferreyra+920,+Bell+Ville,+Cordoba" target="_blank" 
+       style="display: inline-block; background: var(--midnight); color: var(--gold); padding: 12px 25px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 0.7rem; border: 1px solid var(--gold); margin-bottom: 30px;">
+        <i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> CÓMO LLEGAR (GPS)
+    </a>
+
+    <div style="display: flex; justify-content: center; gap: 35px;">
+        <a href="https://www.facebook.com/share/1HLei8aR4t/" target="_blank" style="color: var(--midnight); font-size: 1.5rem;"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://wa.me/5493537313686" target="_blank" style="color: var(--midnight); font-size: 1.5rem;"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/garciayciadistribuciones" target="_blank" style="color: var(--midnight); font-size: 1.5rem;"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+</section>
+
+    </main>
+    <div id="modalProductos">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">CATÁLOGO</h2>
+                <button class="close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <div id="modalHorarios" class="modal-premium">
+        <div class="modal-content" style="height: auto;">
+            <div class="modal-header">
+                <h2>HORARIOS DE ATENCIÓN</h2>
+                <button class="close-btn" onclick="closeSchedule()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div style="padding: 20px;">
+                <div style="background: var(--soft-blue); padding: 20px; border-radius: 15px; border-left: 5px solid var(--gold);">
+                    <p style="margin-bottom: 10px;"><strong>Lunes a Viernes:</strong><br>
+                    08:30 — 12:30 | 15:30 — 19:30</p>
+                    <p><strong>Sábados y Domingos:</strong><br>
+                    <span style="color: #e74c3c; font-weight: 800;">Cerrado</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <div id="clientPanel" class="client-panel">
+    <h3 style="color:var(--gold); margin-bottom:15px; font-family: 'Lexend'; font-size: 1rem; text-align: center;">RESUMEN DE PEDIDO</h3>
+    <div id="orderSummary"></div>
+    
+    <input type="text" id="cli" class="form-input" placeholder="NOMBRE / RAZÓN SOCIAL">
+    <input type="text" id="loc" class="form-input" placeholder="LOCALIDAD">
+    
+    <input type="text" id="dir" class="form-input" placeholder="DIRECCIÓN DE ENTREGA" style="text-transform: uppercase;">
+    
+    <button class="send-btn" onclick="enviarFinal()">ENVIAR PEDIDO WHATSAPP</button>
+    
+    <p onclick="togglePanel()" style="text-align: center; margin-top: 15px; color: var(--gold); cursor: pointer; font-weight: 700; font-size: 0.8rem;">VOLVER</p>
+</div>
+
+
+    <div style="position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 12000;">
+        <a href="tel:3537313686" style="width: 50px; height: 50px; background: var(--midnight); color: var(--gold); border: 1px solid var(--gold); border-radius: 15px; display: grid; place-items: center; font-size: 1.3rem; box-shadow: 0 10px 20px rgba(0,0,0,0.2);"><i class="fa-solid fa-phone"></i></a>
+       <button onclick="togglePanel()" class="floating-cart" style="width: 50px; height: 50px; background: var(--gold); color: var(--midnight); border: none; border-radius: 15px; display: grid; place-items: center; font-size: 1.3rem; box-shadow: 0 10px 20px rgba(0,0,0,0.2); position: relative;">
+    <i class="fa-solid fa-clipboard-list"></i>
+    <span id="orderBadge" style="position: absolute; top: -5px; right: -5px; background: #e74c3c; color: white; font-size: 0.6rem; width: 20px; height: 20px; border-radius: 50%; display: none; place-items: center; font-weight: 800; border: 2px solid white;">0</span>
+</button>
+
+<script>
+    // 1. CONFIGURACIÓN Y BASE DE DATOS
+    const CSV_URL = 'https://docs.google.com/spreadsheets/d/1o0BEHFmWXWAs-UrNc0h3KW-5v9PDy6WIb5_-9SqVbFE/export?format=csv';
+    let categorias = {};
+    let carrito = [];
+
+        async function cargarBaseDeDatos() {
+        try {
+            const response = await fetch(CSV_URL);
+            const text = await response.text();
+            const filas = text.split('\n').slice(1); 
+            filas.forEach(fila => {
+                const columnas = fila.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(c => c.replace(/"/g, '').trim());
+                if (columnas.length >= 4) {
+                    const cat = columnas[0].toUpperCase();
+                    const sub = columnas[1];
+                    const prod = columnas[2];
+                    const img = columnas[3];
+                    if (!categorias[cat]) { categorias[cat] = { n: cat, p: {} }; }
+                    if (!categorias[cat].p[sub]) { categorias[cat].p[sub] = []; }
+                    categorias[cat].p[sub].push({ n: prod, img: img });
+                }
+            });
+
+            // === ESTO ES LO NUEVO QUE APAGA EL CARTEL ===
+            const loader = document.getElementById('loadingOverlay');
+            if(loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }
+            // ===========================================
+
+            console.log("SISTEMA GARCÍA Y CÍA: SINCRONIZADO.");
+        } catch (error) {
+            console.error("Error conectando:", error);
+            // SI FALLA, QUITAMOS EL CARGADOR PARA QUE NO SE TRABE LA PANTALLA
+            const loader = document.getElementById('loadingOverlay');
+            if(loader) loader.style.display = 'none';
+        }
+    }
+
+    // 2. LÓGICA DE NAVEGACIÓN (MODALES)
+    function openModal(tipo) {
+        const modal = document.getElementById('modalProductos');
+        const title = document.getElementById('modalTitle');
+        const body = document.getElementById('modalBody');
+        const mapa = { 'alm': 'ALIMENTOS', 'per': 'PERFUMERÍA', 'lim': 'LIMPIEZA', 'var': 'VARIOS', 'sem': 'OFERTAS', 'ext': 'EXTRAS' };
+        
+        const catBusqueda = mapa[tipo] || tipo.toUpperCase();
+        
+        title.innerText = catBusqueda;
+        body.innerHTML = '';
+
+        if (!categorias[catBusqueda] || Object.keys(categorias[catBusqueda].p).length === 0) {
+            body.innerHTML = `
+                <div style="text-align:center; padding:40px;">
+                    <p style="opacity:0.6; font-weight:600; color:var(--midnight);">ESTA SECCIÓN ESTARÁ DISPONIBLE PRÓXIMAMENTE</p>
+                    <p onclick="closeModal()" style="margin-top:20px; color:var(--gold); cursor:pointer; font-weight:800; font-size:0.7rem;">VOLVER AL INICIO</p>
+                </div>`;
+        } else {
+            Object.keys(categorias[catBusqueda].p).forEach(grupo => {
+                body.innerHTML += `
+                    <div onclick="mostrarSubgrupo('${catBusqueda}', '${grupo}')" 
+                         style="margin:10px 0; padding:18px; background:var(--soft-blue); border-radius:15px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-weight:800; border:1px solid #eef2f7; color:var(--midnight); font-size:0.75rem;">
+                        ${grupo.toUpperCase()} <i class="fa-solid fa-chevron-right" style="color:var(--gold);"></i>
+                    </div>`;
+            });
+        }
+
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('active'), 10);
+    }
+
+    function mostrarSubgrupo(cat, grupo) {
+    const body = document.getElementById('modalBody');
+    const title = document.getElementById('modalTitle');
+    title.innerText = grupo.toUpperCase();
+    
+    let html = `
+        <div onclick="openModal('${cat}')" style="color:var(--gold); cursor:pointer; font-weight:800; margin-bottom:15px; font-size:0.65rem; display:flex; align-items:center; gap:5px;">
+            <i class="fa-solid fa-arrow-left"></i> VOLVER
+        </div>
+
+        <div class="search-container">
+            <div class="search-input-wrapper" style="position: relative; display: flex; align-items: center;">
+                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 15px;"></i>
+                <input type="text" id="innerSearch" class="search-bar-inner" placeholder="BUSCAR PRODUCTO..." onkeyup="filtrarProductosInternos()" style="width: 100%; padding-right: 40px;">
+                <i class="fa-solid fa-circle-xmark clear-search" onclick="clearSearch()" style="position: absolute; right: 15px; cursor: pointer; color: var(--gold); display: none; font-size: 1.2rem; z-index: 10;"></i>
+            </div>
+        </div>
+
+        <div id="listaProductosInterna">`;
+
+
+        // RECORREMOS TUS 700 PRODUCTOS
+        categorias[cat].p[grupo].forEach(item => {
+            const cant = carrito.filter(p => p === item.n).length;
+            html += `
+                <div class="prod-item">
+                    <div class="prod-info">
+                        <img src="${item.img}" class="prod-img" onerror="this.src='https://via.placeholder.com/50?text=IMG'">
+                        <span class="prod-name">${item.n.toUpperCase()}</span>
+                    </div>
+                    <div class="item-controls">
+                        <button onclick="quitar('${item.n}')" class="btn-qty btn-minus">-</button>
+                        <span id="cant-${item.n}" class="item-count ${cant > 0 ? 'active' : ''}">${cant}</span>
+                        <button onclick="agregar('${item.n}')" class="btn-qty btn-plus">+</button>
+                    </div>
+                </div>`;
+        });
+
+        html += `</div>`;
+        body.innerHTML = html;
+    }
+
+function filtrarProductosInternos() {
+    const input = document.getElementById('innerSearch').value.toUpperCase();
+    const lista = document.getElementById('listaProductosInterna');
+    const items = lista.getElementsByClassName('prod-item');
+
+    for (let i = 0; i < items.length; i++) {
+        const nombreElemento = items[i].querySelector('.prod-name');
+        if (nombreElemento) {
+            const nombre = nombreElemento.innerText.toUpperCase();
+            // USAMOS INCLUDES PARA QUE SEA MÁS EFECTIVO
+            if (nombre.includes(input)) {
+                items[i].style.display = "flex";
+            } else {
+                items[i].style.display = "none";
+            }
+        }
+    }
+}
+
+        function togglePanel() {
+    const panel = document.getElementById('clientPanel');
+    panel.classList.toggle('active');
+    if(panel.classList.contains('active')) {
+        // --- ESTO RELLENA LOS DATOS AUTOMÁTICAMENTE (NIVEL PREMIUM) ---
+        document.getElementById('cli').value = localStorage.getItem('garcia_cli') || '';
+        document.getElementById('loc').value = localStorage.getItem('garcia_loc') || '';
+        document.getElementById('dir').value = localStorage.getItem('garcia_dir') || ''; // <--- AGREGAMOS ESTA
+        // --------------------------------------------------------------
+
+        const res = document.getElementById('orderSummary');
+        const resumen = carrito.reduce((acc, curr) => { acc[curr] = (acc[curr] || 0) + 1; return acc; }, {});
+        res.innerHTML = Object.entries(resumen).map(([prod, cant]) => 
+            `<div class="summary-item"><span>${cant}x ${prod}</span><i class="fa-solid fa-trash-can" onclick="borrarProd('${prod}')" style="color:#e74c3c; cursor:pointer;"></i></div>`
+        ).join('') || '<p style="text-align:center; opacity:0.5;">Tu carrito está vacío</p>';
+    }
+}
+// --- SISTEMA DE FILTRADO CORPORATIVO GARCÍA Y CÍA ---
+function filtrarProductos() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toUpperCase();
+    const productos = document.querySelectorAll('.product-card');
+
+    productos.forEach(card => {
+        // ESTO REVISA TODO EL TEXTO DE LA TARJETA DEL PRODUCTO
+        const texto = card.innerText.toUpperCase();
+        
+        if (texto.includes(filter)) {
+            card.style.display = ""; // MUESTRA SI COINCIDE
+        } else {
+            card.style.display = "none"; // OCULTA SI NO COINCIDE
+        }
+    });
+}
+
+
+    function borrarProd(p) { carrito = carrito.filter(prod => prod !== p); actualizarUI(p); togglePanel(); togglePanel(); }
+ function enviarFinal() {
+    const nombre = document.getElementById('cli').value;
+    const loc = document.getElementById('loc').value;
+    const dir = document.getElementById('dir').value; // <--- AGREGAMOS ESTO
+    
+    if(!nombre || !loc || !dir || carrito.length === 0) {
+        return alert("POR FAVOR, COMPLETÁ TODOS LOS DATOS Y AGREGÁ PRODUCTOS");
+    }
+
+    // --- ESTO GUARDA LOS DATOS PARA LA PRÓXIMA VEZ ---
+    localStorage.setItem('garcia_cli', nombre);
+    localStorage.setItem('garcia_loc', loc);
+    localStorage.setItem('garcia_dir', dir); // <--- TAMBIÉN GUARDAMOS LA DIRECCIÓN
+    // ------------------------------------------------
+
+    const resumen = carrito.reduce((acc, curr) => { acc[curr] = (acc[curr] || 0) + 1; return acc; }, {});
+    const lista = Object.entries(resumen).map(([p, c]) => `• ${c}x ${p.toUpperCase()}`).join('\n');
+    
+    // ABAJO AGREGAMOS LA DIRECCIÓN AL MENSAJE DE WHATSAPP
+    const msg = `🏛️ *GARCÍA Y CÍA - PEDIDO*\n*CLIENTE:* ${nombre.toUpperCase()}\n*LOCALIDAD:* ${loc.toUpperCase()}\n*DIRECCIÓN:* ${dir.toUpperCase()}\n\n*DETALLE:*\n${lista}`;
+    
+    window.open(`https://wa.me/5493537313686?text=${encodeURIComponent(msg)}`);
+}
+
+    function agregar(p) { 
+        carrito.push(p); 
+        actualizarUI(p); 
+        animarCarrito();
+    }
+
+    function quitar(p) { 
+        const i = carrito.lastIndexOf(p); 
+        if (i > -1) { 
+            carrito.splice(i, 1); 
+            actualizarUI(p); 
+            animarCarrito();
+        } 
+    }
+
+    function actualizarUI(p) {
+        const cant = carrito.filter(prod => prod === p).length;
+        const el = document.getElementById(`cant-${p}`);
+        if(el) { 
+            el.innerText = cant; 
+            cant > 0 ? el.classList.add('active') : el.classList.remove('active'); 
+        }
+        const badge = document.getElementById('orderBadge');
+        if(badge) { 
+            badge.innerText = carrito.length; 
+            badge.style.display = carrito.length > 0 ? 'grid' : 'none'; 
+        }
+    }
+// --- FUNCIONES ADITIVAS DE MEJORA ---
+
+// 1. CARGA ELEGANTE DE IMÁGENES
+document.addEventListener('load', function(e) {
+    if (e.target.classList && e.target.classList.contains('prod-img')) {
+        e.target.classList.add('img-loaded');
+    }
+}, true);
+
+// 2. CONTROL DEL BOTÓN DE SCROLL (MUESTRA EL BOTÓN AL BAJAR)
+window.onscroll = function() {
+    const btn = document.getElementById("btnArriba");
+    if (btn) {
+        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+            btn.style.display = "block";
+        } else {
+            btn.style.display = "none";
+        }
+    }
+};
+
+// 3. FUNCIÓN PARA SUBIR SUAVEMENTE AL PRINCIPIO
+function topFunction() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+
+    function actualizarReloj() {
+        const now = new Date();
+        const clock = document.getElementById('clock');
+        const dateDisp = document.getElementById('date-display');
+        if(clock) clock.innerText = now.toLocaleTimeString('es-AR', { hour12: false });
+        if(dateDisp) dateDisp.innerText = now.toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' }).toUpperCase();
+    }
+
+    function closeModal() { document.getElementById('modalProductos').classList.remove('active'); setTimeout(() => document.getElementById('modalProductos').style.display = 'none', 300); }
+    function openSchedule() { document.getElementById('modalHorarios').style.display = 'flex'; setTimeout(() => document.getElementById('modalHorarios').classList.add('active'), 10); }
+    function closeSchedule() { document.getElementById('modalHorarios').classList.remove('active'); setTimeout(() => document.getElementById('modalHorarios').style.display = 'none', 300); }
+
+    window.onclick = function(e) { if (e.target.id === 'modalProductos') closeModal(); if (e.target.id === 'modalHorarios') closeSchedule(); }
+
+// INICIO DEL SISTEMA
+window.onload = () => {
+    cargarBaseDeDatos();
+    setInterval(actualizarReloj, 1000);
+    actualizarReloj();
+
+    // ESTO RECUPERA LOS DATOS GUARDADOS AUTOMÁTICAMENTE
+    if(document.getElementById('cli')) document.getElementById('cli').value = localStorage.getItem('garcia_cli') || '';
+    if(document.getElementById('loc')) document.getElementById('loc').value = localStorage.getItem('garcia_loc') || '';
+    if(document.getElementById('dir')) document.getElementById('dir').value = localStorage.getItem('garcia_dir') || '';
+};
+
+        // --- ESTA ES LA MAGIA QUE HACE FUNCIONAR TU BOTÓN NUEVO ---
+    window.onscroll = function() {
+        const btn = document.getElementById("btnArriba");
+        if (btn) {
+            // APARECE CUANDO BAJAS 300 PIXELES
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        }
+    };
+
+    function topFunction() {
+        // SUBE SUAVEMENTE AL PRINCIPIO
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+    
+    // DETECTA LA CARGA DE TUS 700 PRODUCTOS PARA EL FADE-IN
+    document.addEventListener('load', function(e) {
+        if (e.target.classList && e.target.classList.contains('prod-img')) {
+            e.target.classList.add('img-loaded');
+        }
+    }, true);
+// --- FUNCION PARA LA X DEL BUSCADOR ---
+function clearSearch() {
+    const input = document.getElementById('innerSearch');
+    if (input) {
+        input.value = ''; // BORRA EL TEXTO
+        filtrarProductosInternos(); // RESETEA LA LISTA DE PRODUCTOS
+        const btnX = document.querySelector('.clear-search');
+        if (btnX) btnX.style.display = 'none'; // ESCONDE LA X
+        input.focus(); // DEJA EL CURSOR LISTO PARA ESCRIBIR DE NUEVO
+    }
+}
+
+// MUESTRA LA X SOLO CUANDO EL CLIENTE ESCRIBE
+document.addEventListener('input', function(e) {
+    if(e.target.id === 'innerSearch') {
+        const btnX = document.querySelector('.clear-search');
+        if(btnX) {
+            btnX.style.display = e.target.value.length > 0 ? 'block' : 'none';
+        }
+    }
+});
+function animarCarrito() {
+    // BUSCAMOS EL BOTÓN POR CLASE O PORQUE CONTIENE EL BADGE
+    const cartBtn = document.querySelector('.floating-cart') || document.getElementById('orderBadge')?.parentElement;
+    
+    if(cartBtn) {
+        console.log("ANIMANDO CARRITO..."); // ESTO TE DIRÁ EN LA CONSOLA SI FUNCIONA
+        cartBtn.classList.remove('cart-animate');
+        void cartBtn.offsetWidth; // ESTE ES UN TRUCO PARA REINICIAR LA ANIMACIÓN
+        cartBtn.classList.add('cart-animate');
+        
+        setTimeout(() => {
+            cartBtn.classList.remove('cart-animate');
+        }, 300);
+    } else {
+        console.log("NO SE ENCONTRÓ EL BOTÓN PARA ANIMAR");
+    }
+}
+
+
+// ESTA FUNCION LA LLAMAREMOS DESDE TU ACTUALIZAR CARRITO
+
+</script>
+<button onclick="topFunction()" id="btnArriba" title="VOLVER ARRIBA"><i class="fa-solid fa-arrow-up"></i></button>
